@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light">
 <title>Choice without choice — vote to form this pod</title>
-<meta name="description" content="A Frame Creation map of participation that is real as a procedure but not as agency. Every game on the midway is playable. None of them is winnable. Mapped, not solved — vote to form the pod.">
+<meta name="description" content="You get to vote. You get real options. But so much is decided before you show up that none of the options change what happens. We mapped it — we didn't solve it. Vote to form the pod.">
 <meta property="og:title" content="Choice without choice">
-<meta property="og:description" content="Step right up. 8 cards, 6 signals, one wheel that always lands in the same place. Vote to form the pod.">
+<meta property="og:description" content="Step right up. Every game here is playable. None of them is winnable. Come see why — then vote to form the pod.">
 <meta property="og:type" content="website">
 <style>
 /* ═══════════════════════════════════════════════════════════
@@ -33,8 +33,10 @@
   --rule:#2f1f42;
   --hair:rgba(47,31,66,.16);
   --hair-2:rgba(47,31,66,.30);
-  --gutter:clamp(20px,5vw,64px);
-  --measure:68ch;
+  --gutter:clamp(24px,6vw,84px);
+  --measure:64ch;
+  --air:clamp(28px,4.6vw,54px);      /* the standard breath between things */
+  --air-lg:clamp(44px,7vw,88px);     /* between a block and the next idea */
   --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
   --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
@@ -46,7 +48,7 @@
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
 body{
   background:var(--paper);color:var(--ink);font-family:var(--sans);
-  line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  line-height:1.72;-webkit-font-smoothing:antialiased;overflow-x:hidden;
   /* faint confetti fleck — paper, not screen */
   background-image:
     radial-gradient(circle at 12% 18%,rgba(224,79,56,.07) 2px,transparent 2.5px),
@@ -63,15 +65,28 @@ a{color:inherit}
 ::selection{background:var(--sun);color:#2f1f42}
 
 /* —— layout —— */
-.wrap{width:100%;max-width:1120px;margin:0 auto;padding-inline:var(--gutter)}
+.wrap{width:100%;max-width:1140px;margin:0 auto;padding-inline:var(--gutter)}
 .narrow{max-width:var(--measure)}
-section{padding-block:clamp(58px,10vw,124px);position:relative}
+section{padding-block:clamp(84px,13vw,180px);position:relative}
 
 /* wobbly hand-inked divider */
 .rule{border:0;height:14px;margin:0;overflow:hidden;position:relative}
 .rule::before{
   content:"";position:absolute;left:var(--gutter);right:var(--gutter);top:6px;height:2px;
   background:repeating-linear-gradient(90deg,var(--hair-2) 0 26px,transparent 26px 34px);
+}
+
+/* —— rhythm: standard breath between a heading, its intro, and the block below —— */
+h2 + .lede,.sec-no + h2 + .lede{margin-top:clamp(20px,2.8vw,30px)}
+.lede + .btn-row,.lede + .coverage,.lede + .booths,.lede + .gaps,
+.lede + .access,.lede + .beneficiaries,.lede + .ladder,.lede + .wheelbox,
+.lede + .next,.lede + .blindspots{margin-top:var(--air-lg)}
+.pull{margin-top:var(--air)}
+.cols + .booths,.cols + .ul{margin-top:var(--air-lg)}
+.note{margin-top:14px;font-size:15.5px}
+.mech-cap{
+  margin-top:var(--air-lg);font-family:var(--mono);font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--faint);
 }
 
 /* —— type —— */
@@ -98,7 +113,7 @@ em.hand{font-family:var(--serif);font-style:italic}
 .sec-no{
   display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.18em;
   text-transform:uppercase;color:var(--paper-2);background:var(--ink);
-  padding:6px 14px;margin-bottom:16px;transform:rotate(-1.4deg);
+  padding:7px 15px;margin-bottom:clamp(22px,3.2vw,32px);transform:rotate(-1.4deg);
   border-radius:4px 4px 4px 4px;
 }
 
@@ -149,6 +164,13 @@ em.hand{font-family:var(--serif);font-style:italic}
 }
 .brand{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-2)}
 .brand b{color:var(--ink);font-weight:700}
+/* the brand rides over the striped awning, so give it a sign to sit on */
+.topbar .brand{
+  background:var(--paper-2);border:2px solid var(--ink);border-radius:999px;
+  padding:6px 15px;transform:rotate(-.8deg);
+  transition:background .3s ease,border-color .3s ease;
+}
+.topbar.stuck .brand{background:transparent;border-color:transparent;transform:none;padding-inline:0}
 .topbar .btn{min-height:42px;padding:9px 18px;font-size:14px;box-shadow:2px 2px 0 var(--ink)}
 .topbar .btn{opacity:0;transform:translateY(-8px);pointer-events:none;transition:opacity .3s ease,transform .3s ease,background .16s ease}
 .topbar.stuck .btn{opacity:1;transform:none;pointer-events:auto}
@@ -173,35 +195,41 @@ em.hand{font-family:var(--serif);font-style:italic}
 /* ═══════════ H E R O ═══════════ */
 .hero{
   min-height:100svh;display:flex;flex-direction:column;justify-content:center;
-  padding-block:clamp(92px,15vh,150px) clamp(36px,7vh,72px);position:relative;overflow:hidden;
+  padding-block:clamp(112px,17vh,178px) clamp(52px,9vh,96px);position:relative;overflow:hidden;
 }
 /* the awning: candy stripes across the very top */
 .awning{
-  position:absolute;top:0;left:0;right:0;height:clamp(44px,7vw,64px);z-index:2;
-  background:repeating-linear-gradient(90deg,var(--red) 0 42px,var(--paper-2) 42px 84px);
+  position:absolute;top:0;left:0;right:0;height:clamp(52px,7vw,72px);z-index:2;
+  background:
+    repeating-linear-gradient(90deg,var(--red) 0 44px,var(--paper-2) 44px 88px),
+    var(--paper-2);
   border-bottom:2px solid var(--ink);
 }
+/* the scalloped valance hanging off the bottom edge */
 .awning::after{
-  content:"";position:absolute;left:0;right:0;bottom:-16px;height:18px;
-  background:repeating-linear-gradient(90deg,var(--red) 0 42px,var(--paper-2) 42px 84px);
-  -webkit-mask-image:radial-gradient(18px 18px at 21px 0,transparent 99%,#000 100%);
-  mask-image:radial-gradient(18px 18px at 21px 0,transparent 99%,#000 100%);
-  -webkit-mask-size:42px 18px;mask-size:42px 18px;
+  content:"";position:absolute;left:0;right:0;top:100%;height:22px;
+  background:
+    repeating-linear-gradient(90deg,var(--red) 0 44px,var(--paper-2) 44px 88px),
+    var(--paper-2);
+  -webkit-mask-image:radial-gradient(22px 22px at 22px 0,#000 99%,transparent 100%);
+  mask-image:radial-gradient(22px 22px at 22px 0,#000 99%,transparent 100%);
+  -webkit-mask-size:44px 22px;mask-size:44px 22px;
+  -webkit-mask-repeat:repeat-x;mask-repeat:repeat-x;
 }
 .hero::before{
   content:"";position:absolute;inset:auto -20% -30% -20%;height:70%;pointer-events:none;
   background:radial-gradient(50% 60% at 50% 100%,rgba(242,176,46,.28),transparent 68%);
 }
 .hero .wrap{position:relative;z-index:3}
-.hero h1{margin:16px 0 0;max-width:15ch}
-.hero .lede{margin-top:24px;max-width:52ch}
-.hero .btn-row{margin-top:32px}
+.hero h1{margin:clamp(20px,3vw,30px) 0 0;max-width:15ch}
+.hero .lede{margin-top:clamp(26px,3.6vw,38px);max-width:50ch}
+.hero .btn-row{margin-top:clamp(34px,4.6vw,48px)}
 
 /* the paradox on a torn ticket stub */
 .stub{
-  position:relative;margin-top:clamp(34px,5.5vw,52px);max-width:58ch;
+  position:relative;margin-top:clamp(42px,6.4vw,68px);max-width:56ch;
   background:var(--paper-2);border:2px solid var(--ink);border-radius:6px;
-  padding:clamp(18px,3vw,26px) clamp(20px,3.4vw,30px);
+  padding:clamp(22px,3.4vw,32px) clamp(24px,3.8vw,38px);
   box-shadow:5px 5px 0 rgba(47,31,66,.14);transform:rotate(-.7deg);
 }
 /* punched notches, left and right */
@@ -215,11 +243,11 @@ em.hand{font-family:var(--serif);font-style:italic}
   display:block;font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;
   color:var(--red);margin-bottom:9px;
 }
-.stub p{font-size:clamp(15px,2.4vw,17.5px);color:var(--ink)}
-.stub .who{margin-top:10px;font-size:14px;color:var(--faint)}
+.stub p{font-size:clamp(15px,2.4vw,17.5px);color:var(--ink);line-height:1.68}
+.stub .who{margin-top:16px;font-size:14px;color:var(--faint)}
 
 .cue{
-  margin-top:clamp(26px,4vh,42px);display:inline-flex;align-items:center;gap:10px;
+  margin-top:clamp(36px,5.2vh,60px);display:inline-flex;align-items:center;gap:10px;
   font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);
 }
 .cue span{
@@ -231,12 +259,12 @@ em.hand{font-family:var(--serif);font-style:italic}
 /* —— receipts: a row of ticket stubs —— */
 .receipts{
   border-block:2px solid var(--ink);background:var(--paper-3);
-  padding-block:clamp(26px,4vw,38px);
+  padding-block:clamp(38px,5.4vw,60px);
 }
-.receipts .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(146px,1fr));gap:clamp(16px,3vw,28px)}
+.receipts .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:clamp(20px,3.4vw,34px)}
 .stat{
   background:var(--paper-2);border:2px solid var(--ink);border-radius:5px;
-  padding:14px 16px;box-shadow:3px 3px 0 rgba(47,31,66,.16);
+  padding:18px 20px;box-shadow:3px 3px 0 rgba(47,31,66,.16);
 }
 .stat:nth-child(odd){transform:rotate(-1deg)}
 .stat:nth-child(even){transform:rotate(.9deg)}
@@ -255,14 +283,14 @@ em.hand{font-family:var(--serif);font-style:italic}
   font-family:var(--serif);font-size:clamp(21px,3.8vw,32px);line-height:1.24;font-weight:700;
   max-width:26ch;font-style:italic;
 }
-.cols{display:grid;gap:clamp(26px,5vw,54px);grid-template-columns:1fr}
+.cols{display:grid;gap:clamp(38px,6vw,80px);grid-template-columns:1fr}
 @media (min-width:860px){.cols.two{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);align-items:start}}
 
-.booths{list-style:none;display:grid;gap:clamp(16px,2.8vw,22px);margin-top:clamp(28px,5vw,46px)}
+.booths{list-style:none;display:grid;gap:clamp(20px,3.2vw,30px);margin-top:var(--air-lg)}
 @media (min-width:720px){.booths{grid-template-columns:1fr 1fr}}
 .booths li{
   background:var(--paper-2);border:2px solid var(--ink);border-radius:var(--wobble);
-  padding:clamp(20px,3.2vw,28px);position:relative;
+  padding:clamp(24px,3.6vw,34px);position:relative;
   box-shadow:4px 4px 0 rgba(47,31,66,.13);
   transition:transform .2s ease,box-shadow .2s ease;
 }
@@ -280,7 +308,7 @@ em.hand{font-family:var(--serif);font-style:italic}
 
 /* —— three doors, one room —— */
 .doors{
-  margin-top:clamp(30px,5vw,50px);display:grid;gap:clamp(14px,2.6vw,20px);
+  margin-top:var(--air-lg);display:grid;gap:clamp(16px,2.8vw,24px);
   grid-template-columns:repeat(3,1fr);max-width:640px;
 }
 .door{
@@ -305,10 +333,10 @@ em.hand{font-family:var(--serif);font-style:italic}
   background:repeating-linear-gradient(45deg,rgba(224,79,56,.07) 0 8px,transparent 8px 16px);
 }
 .door.open .leaf{transform:perspective(700px) rotateY(-104deg)}
-.doors-cap{margin-top:14px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+.doors-cap{margin-top:18px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
 
 /* —— the wheel —— */
-.wheelbox{display:grid;gap:clamp(26px,5vw,48px);align-items:center;margin-top:clamp(30px,5vw,48px)}
+.wheelbox{display:grid;gap:clamp(40px,6vw,76px);align-items:center;margin-top:var(--air-lg)}
 @media (min-width:820px){.wheelbox{grid-template-columns:auto minmax(0,1fr)}}
 .wheel-stage{position:relative;width:min(320px,74vw);justify-self:center}
 .wheel-stage::before{ /* pointer */
@@ -331,9 +359,10 @@ em.hand{font-family:var(--serif);font-style:italic}
   transition:transform 3.6s cubic-bezier(.16,.84,.24,1);
 }
 .wheel .lbl{
-  position:absolute;left:50%;top:50%;width:44%;transform-origin:0 50%;
-  font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;
-  padding-left:26%;white-space:nowrap;color:var(--ink);font-weight:700;
+  position:absolute;left:50%;top:50%;width:42%;transform-origin:0 50%;
+  font-family:var(--mono);font-size:9px;letter-spacing:.02em;text-transform:uppercase;
+  padding-left:14%;white-space:nowrap;overflow:hidden;text-overflow:clip;
+  color:var(--ink);font-weight:700;line-height:1;
 }
 .wheel .lbl.on-dark{color:var(--paper-2)}
 .wheel-hub{
@@ -347,20 +376,20 @@ em.hand{font-family:var(--serif);font-style:italic}
 .wheel-result b{color:var(--red)}
 
 /* —— the ladder (evidence trail) —— */
-.ladder{margin-top:clamp(26px,4.6vw,42px);display:grid;gap:15px}
+.ladder{margin-top:var(--air);display:grid;gap:clamp(18px,2.6vw,26px)}
 .rung{
-  border:2px solid var(--ink);border-radius:10px;padding:clamp(16px,2.8vw,24px);
+  border:2px solid var(--ink);border-radius:10px;padding:clamp(20px,3.2vw,30px);
   background:var(--paper-2);box-shadow:4px 4px 0 rgba(47,31,66,.11);
 }
 .rung .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
 .rung .k b{color:var(--grape);font-weight:700}
-.rung h3{margin:9px 0 7px}
+.rung h3{margin:11px 0 10px}
 .rung p{color:var(--ink-2);font-size:15.5px}
 @media (min-width:720px){
   .rung.indent{margin-left:clamp(20px,4vw,48px)}
   .rung.indent-2{margin-left:clamp(40px,8vw,96px)}
 }
-.sig{list-style:none;margin-top:14px;display:grid;gap:9px}
+.sig{list-style:none;margin-top:20px;display:grid;gap:13px}
 .sig li{font-size:14.5px;color:var(--ink-2);padding-left:20px;position:relative;line-height:1.5}
 .sig li::before{
   content:"✳";position:absolute;left:0;top:0;color:var(--sun);font-size:12px;
@@ -368,7 +397,7 @@ em.hand{font-family:var(--serif);font-style:italic}
 .sig b{color:var(--ink);font-weight:700}
 
 /* —— coverage: the high-striker meters —— */
-.coverage{margin-top:clamp(28px,5vw,44px);display:grid;gap:14px;max-width:840px}
+.coverage{margin-top:var(--air-lg);display:grid;gap:clamp(16px,2.2vw,22px);max-width:860px}
 .cov{display:grid;grid-template-columns:96px 1fr;gap:14px;align-items:center}
 @media (min-width:640px){.cov{grid-template-columns:124px 1fr auto;gap:18px}}
 .cov .lbl{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2)}
@@ -388,11 +417,11 @@ em.hand{font-family:var(--serif);font-style:italic}
 .cov .val{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);justify-self:start}
 @media (max-width:639px){.cov .val{display:none}}
 
-.blindspots{margin-top:clamp(28px,5vw,44px);display:grid;gap:clamp(16px,2.8vw,22px)}
+.blindspots{margin-top:var(--air-lg);display:grid;gap:clamp(20px,3.2vw,30px)}
 @media (min-width:760px){.blindspots{grid-template-columns:1fr 1fr}}
 .blindspots div{
   background:var(--paper-2);border:2px dashed var(--red);border-radius:12px;
-  padding:clamp(18px,3.2vw,28px);
+  padding:clamp(24px,3.6vw,34px);
 }
 .blindspots .k{
   display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
@@ -401,12 +430,12 @@ em.hand{font-family:var(--serif);font-style:italic}
 .blindspots p{color:var(--ink-2);font-size:15.5px}
 
 /* —— prize cards (the work) —— */
-.gaps{margin-top:clamp(28px,5vw,44px);display:grid;gap:clamp(16px,2.6vw,20px)}
+.gaps{margin-top:var(--air-lg);display:grid;gap:clamp(20px,3vw,28px)}
 @media (min-width:760px){.gaps{grid-template-columns:1fr 1fr}}
 @media (min-width:1040px){.gaps{grid-template-columns:repeat(3,1fr)}}
 .gap{
-  border:2px solid var(--ink);border-radius:12px;padding:clamp(19px,3vw,25px);
-  display:flex;flex-direction:column;gap:13px;background:var(--paper-2);
+  border:2px solid var(--ink);border-radius:12px;padding:clamp(24px,3.4vw,32px);
+  display:flex;flex-direction:column;gap:16px;background:var(--paper-2);
   box-shadow:4px 4px 0 rgba(47,31,66,.13);
   transition:transform .2s ease,box-shadow .2s ease;
 }
@@ -417,17 +446,17 @@ em.hand{font-family:var(--serif);font-style:italic}
   background:var(--sun);
 }
 .gap .q{font-family:var(--serif);font-style:italic;font-size:16.5px;color:var(--ink);line-height:1.4}
-.gap dl{display:grid;gap:9px;padding-top:13px;border-top:2px dotted var(--hair-2)}
+.gap dl{display:grid;gap:11px;padding-top:18px;border-top:2px dotted var(--hair-2)}
 .gap dt{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
 .gap dd{font-size:14.5px;color:var(--ink-2);margin-top:-6px}
 
 /* —— access —— */
-.access{margin-top:clamp(28px,5vw,44px);display:grid;gap:14px}
+.access{margin-top:var(--air-lg);display:grid;gap:clamp(16px,2.4vw,22px)}
 .acc{
-  border:2px solid var(--ink);border-radius:10px;padding:clamp(17px,2.8vw,23px);
-  display:grid;gap:12px;background:var(--paper-2);
+  border:2px solid var(--ink);border-radius:10px;padding:clamp(22px,3.2vw,30px);
+  display:grid;gap:16px;background:var(--paper-2);
 }
-@media (min-width:900px){.acc{grid-template-columns:1.05fr .95fr 1.4fr;gap:24px;align-items:start}}
+@media (min-width:900px){.acc{grid-template-columns:1.05fr .95fr 1.4fr;gap:clamp(26px,3.4vw,44px);align-items:start}}
 .acc .need{font-weight:700;font-size:15px}
 .acc .barrier{font-size:14.5px;color:var(--red)}
 .acc .path{font-size:14.5px;color:var(--ink-2)}
@@ -438,15 +467,15 @@ em.hand{font-family:var(--serif);font-style:italic}
 
 /* —— the house always wins —— */
 .house{background:var(--paper-3);border-block:2px solid var(--ink)}
-.beneficiaries{list-style:none;display:grid;gap:clamp(14px,2.4vw,18px);margin-top:clamp(28px,5vw,44px)}
+.beneficiaries{list-style:none;display:grid;gap:clamp(18px,2.8vw,26px);margin-top:var(--air-lg)}
 @media (min-width:700px){.beneficiaries{grid-template-columns:1fr 1fr}}
 @media (min-width:1040px){.beneficiaries{grid-template-columns:repeat(3,1fr)}}
 .beneficiaries li{
-  background:var(--paper-2);border:2px solid var(--ink);border-radius:10px;padding:clamp(17px,2.8vw,23px);
+  background:var(--paper-2);border:2px solid var(--ink);border-radius:10px;padding:clamp(22px,3.2vw,30px);
 }
 .beneficiaries h3{font-size:17px;color:var(--red)}
 .beneficiaries p{margin-top:9px;color:var(--ink-2);font-size:14.5px}
-.mechanisms{list-style:none;margin-top:clamp(26px,4.4vw,38px);display:flex;flex-wrap:wrap;gap:10px}
+.mechanisms{list-style:none;margin-top:20px;display:flex;flex-wrap:wrap;gap:13px}
 .mechanisms li{
   font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
   border:2px solid var(--ink);border-radius:99px;padding:7px 15px;background:var(--paper-2);
@@ -462,23 +491,23 @@ em.hand{font-family:var(--serif);font-style:italic}
 }
 .action .wrap{position:relative;z-index:1;text-align:center}
 .action h2{max-width:19ch;margin-inline:auto}
-.action .lede{margin:22px auto 0;max-width:50ch}
-.action .btn-row{justify-content:center;margin-top:34px}
+.action .lede{margin:clamp(24px,3.2vw,34px) auto 0;max-width:50ch}
+.action .btn-row{justify-content:center;margin-top:clamp(38px,5vw,54px)}
 .action .btn-primary{min-height:62px;padding:18px 40px;font-size:17px}
-.fineprint{margin-top:20px;font-size:13.5px;color:var(--faint)}
+.fineprint{margin-top:26px;font-size:13.5px;color:var(--faint)}
 
 .next{
-  margin-top:clamp(46px,7.5vw,76px);text-align:left;display:grid;gap:clamp(13px,2.2vw,17px);
+  margin-top:clamp(62px,9vw,110px);text-align:left;display:grid;gap:clamp(16px,2.4vw,24px);
 }
 @media (min-width:620px){.next{grid-template-columns:repeat(2,1fr)}}
 @media (min-width:1020px){.next{grid-template-columns:repeat(5,1fr)}}
 .next li{
   list-style:none;background:var(--paper);border:2px solid var(--ink);border-radius:10px;
-  padding:clamp(16px,2.4vw,20px);box-shadow:3px 3px 0 rgba(47,31,66,.13);
+  padding:clamp(20px,2.8vw,26px);box-shadow:3px 3px 0 rgba(47,31,66,.13);
 }
 .next .no{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--grape);display:block;margin-bottom:9px;font-weight:700}
 .next h3{font-size:15.5px}
-.next p{margin-top:7px;font-size:13.5px;color:var(--ink-2);line-height:1.5}
+.next p{margin-top:9px;font-size:13.5px;color:var(--ink-2);line-height:1.5}
 
 /* —— confetti —— */
 .confetti{position:fixed;inset:0;pointer-events:none;z-index:70;overflow:hidden}
@@ -497,8 +526,8 @@ em.hand{font-family:var(--serif);font-style:italic}
 @media (min-width:561px){.sticky-cta{display:none}}
 
 /* —— footer —— */
-footer{border-top:2px solid var(--ink);padding-block:clamp(34px,5.5vw,54px);font-size:13.5px;color:var(--ink-2);background:var(--paper-3)}
-footer .row{display:flex;flex-wrap:wrap;gap:16px 28px;justify-content:space-between;align-items:center}
+footer{border-top:2px solid var(--ink);padding-block:clamp(48px,7vw,80px);font-size:13.5px;color:var(--ink-2);background:var(--paper-3)}
+footer .row{display:flex;flex-wrap:wrap;gap:24px 40px;justify-content:space-between;align-items:center}
 footer a{color:var(--ink);text-decoration:none;border-bottom:2px solid var(--hair-2)}
 footer a:hover{color:var(--red);border-color:var(--red)}
 body.has-sticky footer{padding-bottom:calc(86px + env(safe-area-inset-bottom))}
@@ -530,33 +559,33 @@ body.has-sticky footer{padding-bottom:calc(86px + env(safe-area-inset-bottom))}
 <section class="hero" id="top">
   <div class="awning" aria-hidden="true"></div>
   <div class="wrap">
-    <p class="eyebrow">Step right up · Frame Creation · mapped 25 Jul 2026</p>
+    <p class="eyebrow">Step right up · mapped 25 July 2026</p>
 
     <h1>Choice <span class="swipe">without</span> choice.</h1>
 
     <p class="lede">
-      People are formally given options, but the field is shaped so heavily
-      upstream that none of the options can really change the outcome. The choice
-      is real as a procedure. It just isn't real as agency.
+      You get to vote. You get real options on the ballot. But so much has already
+      been settled before you ever show up that none of those options change what
+      happens. The choice is real. The power isn't.
     </p>
 
     <div class="btn-row">
       <a class="btn btn-primary" href="#vote">Vote for this pod</a>
-      <a class="btn btn-ghost" href="#situation">See what's missing ↓</a>
+      <a class="btn btn-ghost" href="#situation">Show me ↓</a>
     </div>
 
     <div class="stub">
-      <span class="k">The paradox · admit one</span>
+      <span class="k">Here's the knot · admit one</span>
       <p>
-        <b>Participation must be usable to matter — but the field makes usability
-        itself hard to verify.</b> The rules that make access necessary are the same
-        rules that only show up at the point of use, so you cannot tell whether you
-        were excluded until it is already too late to fix.
+        <b>To find out whether voting works for you, you have to vote.</b> But the
+        rules that can block you usually only appear at the moment you try to use
+        them — the ID, the address, the registration. So you can't tell whether you
+        were shut out until it's too late to do anything about it.
       </p>
-      <p class="who">Verifying the game is fair means playing the game. That's why it's still open.</p>
+      <p class="who">You have to play the game to find out if the game is fair. That's why nobody's untangled this yet.</p>
     </div>
 
-    <div class="cue"><span></span> Scroll — the wheel is down here</div>
+    <div class="cue"><span></span> Scroll — there's a wheel down here</div>
   </div>
 </section>
 
@@ -566,12 +595,12 @@ body.has-sticky footer{padding-bottom:calc(86px + env(safe-area-inset-bottom))}
 <div class="receipts reveal">
   <div class="wrap">
     <div class="grid">
-      <div class="stat"><span class="n">8</span><span class="k">Cards on the ladder</span></div>
-      <div class="stat"><span class="n">6</span><span class="k">Source signals</span></div>
-      <div class="stat"><span class="n">2</span><span class="k">Named themes</span></div>
-      <div class="stat"><span class="n warn">1</span><span class="k">Evidence type missing outright</span></div>
-      <div class="stat"><span class="n warn">0<span class="dim">/3</span></span><span class="k">Sharpness self-score</span></div>
-      <div class="stat"><span class="n warn">0</span><span class="k">Candidate owners approached</span></div>
+      <div class="stat"><span class="n">8</span><span class="k">Cards in the map</span></div>
+      <div class="stat"><span class="n">6</span><span class="k">Real things people told us</span></div>
+      <div class="stat"><span class="n">2</span><span class="k">Big patterns underneath</span></div>
+      <div class="stat"><span class="n warn">1</span><span class="k">Kind of proof we don't have</span></div>
+      <div class="stat"><span class="n warn">0<span class="dim">/3</span></span><span class="k">Score we gave our own idea</span></div>
+      <div class="stat"><span class="n warn">0</span><span class="k">Insiders we've talked to yet</span></div>
     </div>
   </div>
 </div>
@@ -583,11 +612,11 @@ body.has-sticky footer{padding-bottom:calc(86px + env(safe-area-inset-bottom))}
     <div class="cols two">
       <div>
         <h2 class="reveal">It isn't a puzzle.<br>It's a funhouse.</h2>
-        <p class="lede reveal" style="margin-top:20px">
-          A bounded problem has an exit at the end of enough analysis. This one
-          doesn't. Access, legitimacy, information and competition keep reshaping
-          one another — so there is no single lever that resolves the condition
-          without changing the condition itself.
+        <p class="lede reveal">
+          A puzzle has an answer at the end. Work at it long enough and you find the
+          way out. This isn't that. Four things — who's allowed to take part, who's
+          allowed to win, what people know, and who gets believed — keep bending each
+          other out of shape. Fix one and the other three move.
         </p>
       </div>
       <div>
@@ -614,20 +643,20 @@ body.has-sticky footer{padding-bottom:calc(86px + env(safe-area-inset-bottom))}
 
     <ul class="booths reveal">
       <li>
-        <span class="k">Access</span>
-        <p>Voters meet the rules only when they show up to cast a ballot, so the barrier is invisible until participation is already at risk. Confusion, delay, and possible disenfranchisement follow.</p>
+        <span class="k">Who gets to take part</span>
+        <p>Most people meet the rules at the counter. You show up to vote and there's a problem with your ID, your address, your registration. By then it's too late to fix — and you may never find out whether your vote counted.</p>
       </li>
       <li>
-        <span class="k">Competition</span>
-        <p>Gerrymandering, two-party privilege and districts large enough that politicians effectively select their voters. Four states will run 2026 on maps they didn't have in 2024.</p>
+        <span class="k">Who gets to win</span>
+        <p>District lines get drawn so that most races are settled before anyone starts campaigning. Four states are running their 2026 elections on maps they didn't have in 2024.</p>
       </li>
       <li>
-        <span class="k">Information</span>
-        <p>Civic claims don't stabilise into shared judgment before the moment action is needed. What travels fastest is what's emotionally sticky, not what's been verified.</p>
+        <span class="k">What people know</span>
+        <p>By the time everyone can agree on what's true, the moment to act has passed. What spreads fastest is whatever makes people feel something — not whatever has been checked.</p>
       </li>
       <li>
-        <span class="k">Legitimacy</span>
-        <p>Insiders know the rules and can shape them; voters discover them too late to use. The field still looks democratic enough to keep consent — while the real choice has already narrowed.</p>
+        <span class="k">Who gets believed</span>
+        <p>People on the inside know the rules and help write them. Everyone else meets those rules too late to use them. And it all still looks fair enough that nobody stops the ride.</p>
       </li>
     </ul>
   </div>
@@ -639,24 +668,24 @@ body.has-sticky footer{padding-bottom:calc(86px + env(safe-area-inset-bottom))}
 <section id="wheel-sec">
   <div class="wrap">
     <span class="sec-no">02 — How we know</span>
-    <h2 class="reveal">No client handed us this.<br>The evidence did.</h2>
-    <p class="lede narrow reveal" style="margin-top:20px">
-      Six signals out of the Labs civics collection climbed the ladder into two
-      themes and one super-theme. Every claim below traces to a source that ships
-      in this repo — and the trail keeps arriving at the same place.
+    <h2 class="reveal">Nobody handed us this.<br>We followed the evidence.</h2>
+    <p class="lede narrow reveal">
+      Six real things people said, out of our civics collection. We grouped them,
+      then grouped the groups. Everything below traces back to something an actual
+      person told us — and the trail keeps ending up in the same place.
     </p>
 
     <div class="wheelbox">
       <div class="wheel-stage reveal">
-        <div class="wheel" id="wheel" role="img" aria-label="A prize wheel with eight outcomes: incumbent holds, safe seat, uncontested, map redrawn, donor-backed, filing deadline, challenger withdrew, and incumbent holds again.">
-          <span class="lbl" style="transform:rotate(-67.5deg)">Incumbent holds</span>
-          <span class="lbl on-dark" style="transform:rotate(-22.5deg)">Safe seat</span>
+        <div class="wheel" id="wheel" role="img" aria-label="A prize wheel with eight outcomes: incumbent, safe seat, uncontested, new map, donor pick, filing deadline, no rival, and incumbent again.">
+          <span class="lbl" style="transform:rotate(-67.5deg)">Incumbent</span>
+          <span class="lbl" style="transform:rotate(-22.5deg)">Safe seat</span>
           <span class="lbl" style="transform:rotate(22.5deg)">Uncontested</span>
-          <span class="lbl on-dark" style="transform:rotate(67.5deg)">Map redrawn</span>
-          <span class="lbl" style="transform:rotate(112.5deg)">Donor-backed</span>
-          <span class="lbl on-dark" style="transform:rotate(157.5deg)">Filing deadline</span>
-          <span class="lbl" style="transform:rotate(202.5deg)">Challenger out</span>
-          <span class="lbl on-dark" style="transform:rotate(247.5deg)">Incumbent holds</span>
+          <span class="lbl" style="transform:rotate(67.5deg)">New map</span>
+          <span class="lbl on-dark" style="transform:rotate(112.5deg)">Donor pick</span>
+          <span class="lbl" style="transform:rotate(157.5deg)">Deadline</span>
+          <span class="lbl on-dark" style="transform:rotate(202.5deg)">No rival</span>
+          <span class="lbl" style="transform:rotate(247.5deg)">Incumbent</span>
           <span class="wheel-hub"></span>
         </div>
         <p class="wheel-result" id="wheel-result" aria-live="polite">Give it a spin.</p>
@@ -667,37 +696,37 @@ body.has-sticky footer{padding-bottom:calc(86px + env(safe-area-inset-bottom))}
 
       <div class="ladder">
         <div class="rung reveal">
-          <span class="k"><b>Super-theme</b> · tier 4</span>
-          <h3>Undisclosed influence over the terms of public judgment</h3>
-          <p>Money, district design, procedural barriers — and now speculative political assets — shape what people can know, choose or contest before the moment of democratic decision.</p>
+          <span class="k"><b>The biggest pattern</b> · top of the map</span>
+          <h3>Someone shapes what you know before you decide</h3>
+          <p>Money, district lines, paperwork rules — and now political crypto coins — all shape what people are able to know, pick, or argue with, before the moment anyone actually decides anything.</p>
         </div>
 
         <div class="rung indent reveal">
-          <span class="k"><b>Theme</b> · tier 3</span>
-          <h3>Pre-shaped democratic participation</h3>
-          <p>Authorities and incumbent power holders decide the field before ordinary voters exercise choice, by controlling both access to participation and the competitiveness of the contest.</p>
+          <span class="k"><b>Underneath that</b> · a theme</span>
+          <h3>The field is set before you get there</h3>
+          <p>The people already in power decide the shape of the contest before ordinary voters get a turn. They control both who's allowed to take part and how close the race will be.</p>
         </div>
 
         <div class="rung indent indent-2 reveal">
-          <span class="k"><b>Pattern</b> · tier 2</span>
-          <h3>Voters as subjects, not authors</h3>
-          <p>Access and influence are both pre-shaped by the authorities who set eligibility rules and electoral geometry before individual choice enters the picture.</p>
+          <span class="k"><b>Underneath that</b> · a pattern</span>
+          <h3>Voters are treated as people the rules happen to</h3>
+          <p>Not as people who help write them. Who can vote and who can win are both decided upstream, before any individual choice enters the picture.</p>
           <ul class="sig">
-            <li><b>Hidden Voting Barriers</b> — the requirement appears at the point of use, so the barrier is invisible until access is already at risk.</li>
-            <li><b>“How do I know if I've been disenfranchised?”</b> — asked directly, by a voter, with no route to an answer.</li>
-            <li><b>Calls for Stricter Ballot ID</b> — Real ID for in-person voting, verified ID for mail — described as widely supported yet repeatedly rejected.</li>
+            <li><b>Hidden voting barriers</b> — the requirement shows up at the counter, so you can't see it coming until your vote is already at risk.</li>
+            <li><b>“How do I know if I've been disenfranchised?”</b> — a real question, asked by a real voter, with nowhere to go for an answer.</li>
+            <li><b>Calls for stricter ballot ID</b> — Real ID to vote in person, verified ID to vote by mail. Described as popular, and repeatedly rejected.</li>
           </ul>
         </div>
 
         <div class="rung indent indent-2 reveal">
-          <span class="k"><b>Pattern</b> · tier 2</span>
-          <h3>Closed competition structure</h3>
-          <p>District rules and the money needed to contest elections jointly make most races effectively non-contestable — not just “low competitiveness”, but a field shaped before voters meaningfully choose.</p>
+          <span class="k"><b>Underneath that</b> · a pattern</span>
+          <h3>Most races can't really be contested</h3>
+          <p>Between the district lines and the money it takes to run, the outcome is mostly settled early. It isn't that competition is low. It's that the field is shaped before voters matter.</p>
           <ul class="sig">
-            <li><b>Structural Election Imbalances</b> — gerrymandering, two-party privilege, and districts so large politicians effectively choose their voters.</li>
-            <li><b>Mid-Decade Redistricting Shifts</b> — California, Missouri, North Carolina and Texas run 2026 on maps they didn't use in 2024.</li>
-            <li><b>Campaign Finance</b> — reform efforts consistently hit roadblocks like the Citizens United decision.</li>
-            <li><b>Money Blocks Electoral Competition</b> — finance advantages and district design tilt the field toward incumbents and away from contest.</li>
+            <li><b>Lopsided elections</b> — district lines, two big parties, and areas so large that politicians effectively pick their voters instead of the other way around.</li>
+            <li><b>New maps mid-decade</b> — California, Missouri, North Carolina and Texas are voting in 2026 on maps they didn't use in 2024.</li>
+            <li><b>Campaign money</b> — attempts to change the rules keep hitting the same wall, including the Citizens United ruling.</li>
+            <li><b>Money crowds out competition</b> — funding advantages and district design tilt the field toward whoever already holds the seat.</li>
           </ul>
         </div>
       </div>
@@ -714,37 +743,37 @@ body.has-sticky footer{padding-bottom:calc(86px + env(safe-area-inset-bottom))}
 <!-- ═══════════ T H E   G A P ═══════════ -->
 <section id="gap">
   <div class="wrap">
-    <span class="sec-no">03 — The gap</span>
-    <h2 class="reveal">Strongest exactly where<br>it's least useful.</h2>
-    <p class="lede narrow reveal" style="margin-top:20px">
-      We audited our own coverage across the seven evidence types a problem
-      situation needs. Problem and boundary came back strong. One came back
-      empty — and it's the one that decides whether this is a paradox at all.
+    <span class="sec-no">03 — What we're missing</span>
+    <h2 class="reveal">We're strongest exactly<br>where it helps least.</h2>
+    <p class="lede narrow reveal">
+      There are seven kinds of proof a map like this needs. We graded ourselves on
+      all seven. Two came back strong. One came back completely empty — and it's
+      the one that decides whether this is a real trap or just a bad situation.
     </p>
 
     <div class="coverage reveal">
-      <div class="cov" data-level="strong"><span class="lbl">Problem</span><span class="bar"><i style="--pct:100%;--d:.00s"></i></span><span class="val">Strong</span></div>
-      <div class="cov" data-level="strong"><span class="lbl">Boundary</span><span class="bar"><i style="--pct:92%;--d:.07s"></i></span><span class="val">Strong</span></div>
-      <div class="cov" data-level="strong"><span class="lbl">Value</span><span class="bar"><i style="--pct:75%;--d:.14s"></i></span><span class="val">Present</span></div>
-      <div class="cov" data-level="mod"><span class="lbl">Player</span><span class="bar"><i style="--pct:48%;--d:.21s"></i></span><span class="val">Partial — no actor map</span></div>
-      <div class="cov" data-level="thin"><span class="lbl">History</span><span class="bar"><i style="--pct:28%;--d:.28s"></i></span><span class="val">Thin</span></div>
-      <div class="cov" data-level="thin"><span class="lbl">Flux</span><span class="bar"><i style="--pct:24%;--d:.35s"></i></span><span class="val">Thin</span></div>
-      <div class="cov" data-level="absent"><span class="lbl">Counterfactual</span><span class="bar"><i style="--pct:3%;--d:.42s"></i></span><span class="val">Essentially missing</span></div>
+      <div class="cov" data-level="strong"><span class="lbl">What's broken</span><span class="bar"><i style="--pct:100%;--d:.00s"></i></span><span class="val">Strong</span></div>
+      <div class="cov" data-level="strong"><span class="lbl">Where it stops</span><span class="bar"><i style="--pct:92%;--d:.07s"></i></span><span class="val">Strong</span></div>
+      <div class="cov" data-level="strong"><span class="lbl">What's at stake</span><span class="bar"><i style="--pct:75%;--d:.14s"></i></span><span class="val">Pretty good</span></div>
+      <div class="cov" data-level="mod"><span class="lbl">Who's involved</span><span class="bar"><i style="--pct:48%;--d:.21s"></i></span><span class="val">Half done — no map of who's who</span></div>
+      <div class="cov" data-level="thin"><span class="lbl">How we got here</span><span class="bar"><i style="--pct:28%;--d:.28s"></i></span><span class="val">Thin</span></div>
+      <div class="cov" data-level="thin"><span class="lbl">Where it's heading</span><span class="bar"><i style="--pct:24%;--d:.35s"></i></span><span class="val">Thin</span></div>
+      <div class="cov" data-level="absent"><span class="lbl">When it didn't happen</span><span class="bar"><i style="--pct:3%;--d:.42s"></i></span><span class="val">Missing — see below</span></div>
     </div>
 
     <div class="blindspots reveal">
       <div>
-        <span class="k">Blind spot — the counterfactual</span>
-        <p>Almost no card says <b>“if this condition were absent, the field would work differently.”</b> Counterfactuals are what separate a genuine paradox from a system that is merely degraded. Right now the trail says what's broken — not what precise absence would expose the contradiction.</p>
+        <span class="k">Blind spot — the time it didn't happen</span>
+        <p>We can't point to a single case where this <b>didn't</b> play out. Almost none of our cards say “take this one thing away and it would have gone differently.” That's the test that tells you whether something is a real trap or just generally broken. Right now we can say what's wrong. We can't yet say what would have to change to prove it.</p>
       </div>
       <div>
-        <span class="k">Blind spot — history &amp; flux</span>
-        <p>We have time-stamped signals — Citizens United, the mid-decade maps — but <b>no trajectory</b>. The field is obviously moving, yet change over time isn't yet named as a mechanism, only as instability.</p>
+        <span class="k">Blind spot — the story so far</span>
+        <p>We've got moments — the Citizens United ruling, the new maps — but <b>no timeline</b>. Things are clearly moving, and we can't yet say how the field got this way or where it's going next. Snapshots, not a story.</p>
       </div>
     </div>
 
-    <p class="pull reveal" style="margin-top:clamp(38px,6.5vw,62px)">
-      Close the counterfactual and a strong opinion becomes a defensible frame.
+    <p class="pull reveal">
+      Find one case where it didn't hold, and a strong opinion becomes something you can defend.
     </p>
   </div>
 </section>
@@ -755,70 +784,71 @@ body.has-sticky footer{padding-bottom:calc(86px + env(safe-area-inset-bottom))}
 <section id="work">
   <div class="wrap">
     <span class="sec-no">04 — What the pod actually does</span>
-    <h2 class="reveal">Five questions.<br>Week one, you're on one of them.</h2>
-    <p class="lede narrow reveal" style="margin-top:20px">
-      No warm-up phase, no scoping month. The gaps are already named, scoped, and
-      matched to a method and a population.
+    <h2 class="reveal">Five questions. In week one,<br>you'll be working on one.</h2>
+    <p class="lede narrow reveal">
+      There's no settling-in period and no month of figuring out what we're doing.
+      The questions are already written, and each one comes with a plan for who to
+      ask and where to look.
     </p>
 
     <div class="gaps">
       <article class="gap reveal">
         <span class="no">01</span>
-        <h3>Point of discovery</h3>
-        <p class="q">Where do voters first learn they may be blocked — and what happens next?</p>
+        <h3>When you find out</h3>
+        <p class="q">When do people learn they might be blocked from voting — and what do they do next?</p>
         <dl>
-          <dt>Method</dt><dd>Interviews with voters turned away, warned late, or forced to cure an ID or eligibility problem; a survey on first-point-of-discovery and resolution path.</dd>
-          <dt>Sources</dt><dd>Election administration reports, Election Protection data, litigation summaries.</dd>
+          <dt>How</dt><dd>Talk to people who were turned away, warned too late, or had to fix an ID or registration problem. Ask where they first found out, and what happened after.</dd>
+          <dt>Where to look</dt><dd>Election office reports, voter-protection records, court filings.</dd>
         </dl>
       </article>
 
       <article class="gap reveal">
         <span class="no">02</span>
         <h3>When a race dies</h3>
-        <p class="q">At what point do challengers conclude a race is unwinnable — and what evidence do they use?</p>
+        <p class="q">When does someone running for office decide they can't win — and what tips them off?</p>
         <dl>
-          <dt>Method</dt><dd>Interviews with former challengers, campaign managers, county party chairs and redistricting advocates; a candidate survey on resource thresholds.</dd>
-          <dt>Sources</dt><dd>FEC data, district-level competitiveness trends, academic work on safe seats.</dd>
+          <dt>How</dt><dd>Interview people who ran and lost, campaign managers, and county party chairs. Ask what they would have needed to keep going.</dd>
+          <dt>Where to look</dt><dd>Campaign funding records, data on how close races actually are, research on safe seats.</dd>
         </dl>
       </article>
 
       <article class="gap reveal">
         <span class="no">03</span>
         <h3>Which break is the break</h3>
-        <p class="q">Is the civic failure experienced mainly as blocked entry, meaningless choice, or illegible legitimacy?</p>
+        <p class="q">Does this feel like being locked out, being handed a fake choice, or not knowing who to trust?</p>
         <dl>
-          <dt>Method</dt><dd>Interviews across turnout levels — first-time voters, habitual nonvoters — plus a survey matching failure mode to lived experience.</dd>
-          <dt>Sources</dt><dd>Civic trust surveys, election studies, political behaviour research.</dd>
+          <dt>How</dt><dd>Talk to people right across the range — first-time voters, people who vote every single time, and people who've stopped.</dd>
+          <dt>Where to look</dt><dd>Trust surveys, election studies, research on why people do and don't vote.</dd>
         </dl>
       </article>
 
       <article class="gap reveal">
         <span class="no">04</span>
-        <h3>Claim to judgment</h3>
-        <p class="q">What exactly stops a civic claim becoming actionable judgment — source confusion, overload, delay, or competing authority?</p>
+        <h3>From true to useful</h3>
+        <p class="q">What stops a true thing from becoming something people act on — confusion, too much noise, delay, or too many voices claiming to be the authority?</p>
         <dl>
-          <dt>Method</dt><dd>Interviews with people who recently delayed or changed a civic action; survey on which obstacle stopped them.</dd>
-          <dt>Sources</dt><dd>Misinformation research, public-health communication, civic information studies.</dd>
+          <dt>How</dt><dd>Interview people who recently hesitated, delayed, or changed their mind about doing something civic. Ask what actually stopped them.</dd>
+          <dt>Where to look</dt><dd>Research on misinformation, on public health messaging, and on how civic information travels.</dd>
         </dl>
       </article>
 
       <article class="gap reveal">
         <span class="no">05</span>
-        <h3>The actor map</h3>
-        <p class="q">Which actors gain when access stays opaque, competition stays weak, and judgment stays fragmented?</p>
+        <h3>Who's actually who</h3>
+        <p class="q">Who gains when the rules stay confusing, races stay uncompetitive, and nobody can agree on what's true?</p>
         <dl>
-          <dt>Method</dt><dd>Interviews with election administrators, campaign strategists, redistricting staff, reform advocates and watchdogs; institutional incentive mapping.</dd>
-          <dt>Sources</dt><dd>Lobbying records, campaign finance reporting, redistricting and legal scholarship.</dd>
+          <dt>How</dt><dd>Interview election officials, campaign strategists, the people who draw the maps, reformers and watchdogs. Then follow the money and the incentives.</dd>
+          <dt>Where to look</dt><dd>Lobbying records, campaign funding reports, research on redistricting and election law.</dd>
         </dl>
       </article>
 
       <article class="gap reveal" style="background:var(--paper-3)">
         <span class="no" style="background:var(--mint);color:var(--paper-2)">★</span>
-        <h3>And the one we owe the method</h3>
-        <p class="q">Find the case where the field <em class="hand">didn't</em> hold — the race, the county, the rule change where pre-shaping failed.</p>
+        <h3>And the one we owe ourselves</h3>
+        <p class="q">Find the time it <em class="hand">didn't</em> work — the race, the county, or the rule change where the setup failed.</p>
         <dl>
-          <dt>Why</dt><dd>The counterfactual is the missing evidence type. Without it we're assuming the pre-shaping is total rather than conditional.</dd>
-          <dt>Bet</dt><dd>It's conditional.</dd>
+          <dt>Why it matters</dt><dd>This is the missing piece. Without it we're assuming the deck is always stacked, instead of stacked under certain conditions.</dd>
+          <dt>Our bet</dt><dd>It's certain conditions.</dd>
         </dl>
       </article>
     </div>
@@ -830,33 +860,33 @@ body.has-sticky footer{padding-bottom:calc(86px + env(safe-area-inset-bottom))}
 <!-- ═══════════ A C C E S S ═══════════ -->
 <section id="access">
   <div class="wrap">
-    <span class="sec-no">05 — Who we'd reach, and how</span>
-    <h2 class="reveal">The hard access already has a route.</h2>
-    <p class="lede narrow reveal" style="margin-top:20px">
-      The people who hold what we're missing are not reachable by wishing. Each
-      one has a realistic way in.
+    <span class="sec-no">05 — Who we'd talk to, and how</span>
+    <h2 class="reveal">The hard people to reach<br>already have a route.</h2>
+    <p class="lede narrow reveal">
+      The people who know what we're missing aren't going to turn up on their own.
+      So here's how we'd actually get to each of them.
     </p>
 
     <div class="access">
       <div class="acc reveal">
-        <div><span class="cap">Need</span><span class="need">Voters turned away, delayed, or forced to cure a ballot</span></div>
-        <div><span class="cap">Barrier</span><span class="barrier">No public list of people this happened to</span></div>
-        <div><span class="cap">Realistic path</span><span class="path">Partner with a voter-protection hotline, county election office contacts, or the local civic group that already helped them. Election lawyers and canvassing staff can refer mail-ballot rejections.</span></div>
+        <div><span class="cap">Who</span><span class="need">People turned away, delayed, or made to fix a ballot</span></div>
+        <div><span class="cap">The problem</span><span class="barrier">There's no list of who this happened to</span></div>
+        <div><span class="cap">How we'd get there</span><span class="path">Through voter-protection hotlines, county election offices, or the local group that already helped them. Election lawyers can point us toward people whose mail ballots were rejected.</span></div>
       </div>
       <div class="acc reveal">
-        <div><span class="cap">Need</span><span class="need">County election clerks and poll workers</span></div>
-        <div><span class="cap">Barrier</span><span class="barrier">Busy, cautious, and mid-cycle</span></div>
-        <div><span class="cap">Realistic path</span><span class="path">Cold email county election offices asking for twenty minutes; reach poll workers through training coordinators and county party organisations.</span></div>
+        <div><span class="cap">Who</span><span class="need">County clerks and poll workers</span></div>
+        <div><span class="cap">The problem</span><span class="barrier">Busy, careful, and in the middle of an election cycle</span></div>
+        <div><span class="cap">How we'd get there</span><span class="path">Email county election offices and ask for twenty minutes. Reach poll workers through the people who train them.</span></div>
       </div>
       <div class="acc reveal">
-        <div><span class="cap">Need</span><span class="need">Campaign managers who called a race unwinnable</span></div>
-        <div><span class="cap">Barrier</span><span class="barrier">Nobody advertises the day they gave up</span></div>
-        <div><span class="cap">Realistic path</span><span class="path">Warm introductions through local party networks and former candidate staff.</span></div>
+        <div><span class="cap">Who</span><span class="need">Campaign managers who knew they couldn't win</span></div>
+        <div><span class="cap">The problem</span><span class="barrier">Nobody posts about the day they gave up</span></div>
+        <div><span class="cap">How we'd get there</span><span class="path">Get introduced by someone they already trust — local party people, or staff from campaigns they worked on.</span></div>
       </div>
       <div class="acc reveal">
-        <div><span class="cap">Need</span><span class="need">Turnout, provisional and ballot-cure records</span></div>
-        <div><span class="cap">Barrier</span><span class="barrier">Held county by county, formatted county by county</span></div>
-        <div><span class="cap">Realistic path</span><span class="path">Public records requests to county and state election agencies; FEC records and state maps for competitiveness and donor concentration; library access or direct author requests for the paywalled election science.</span></div>
+        <div><span class="cap">What</span><span class="need">Turnout and ballot records</span></div>
+        <div><span class="cap">The problem</span><span class="barrier">Every county keeps them a little differently</span></div>
+        <div><span class="cap">How we'd get there</span><span class="path">Public records requests to counties and states. Federal funding data and state maps for the rest. For research locked behind a paywall: a library, or just email the author — they usually say yes.</span></div>
       </div>
     </div>
   </div>
@@ -867,48 +897,49 @@ body.has-sticky footer{padding-bottom:calc(86px + env(safe-area-inset-bottom))}
 <!-- ═══════════ T H E   H O U S E ═══════════ -->
 <section class="house" id="house">
   <div class="wrap">
-    <span class="sec-no">06 — The house</span>
-    <h2 class="reveal">The biggest winners are the people<br>who can win without persuading.</h2>
-    <p class="lede narrow reveal" style="margin-top:20px">
-      Not a conspiracy — an incentive structure. Which is worse, because it needs
-      nobody to coordinate it.
+    <span class="sec-no">06 — Who wins if nothing changes</span>
+    <h2 class="reveal">The people who win most are<br>the ones who never have to convince you.</h2>
+    <p class="lede narrow reveal">
+      Nobody is sitting in a back room planning this. It's just that a lot of people
+      do better when nothing changes — which is harder to fix than a plot, because
+      no one has to coordinate it.
     </p>
 
     <ul class="beneficiaries reveal">
-      <li><h3>Incumbent politicians</h3><p>They keep their seats, avoid serious challenge, and face fewer races that could genuinely unseat them.</p></li>
-      <li><h3>Party-aligned power holders</h3><p>Safe seats and pre-shaped districts let parties manage risk, reward loyalty, and control nominations and turnout.</p></li>
-      <li><h3>Major donors &amp; fundraising networks</h3><p>When money becomes a gatekeeper, influence can be bought upstream rather than argued downstream.</p></li>
-      <li><h3>District designers</h3><p>The people who draw the maps gain leverage over who can win before voters enter the contest at all.</p></li>
-      <li><h3>Election-rule gatekeepers</h3><p>Administrators and legal authorities benefit when the system stays legible to insiders and hard to challenge in real time.</p></li>
-      <li><h3>The wider field</h3><p>Consultants, legal specialists and political media don't look like villains, but they gain work, attention and influence from permanent contest without resolution.</p></li>
+      <li><h3>Politicians already in office</h3><p>They keep their seats, skip the hard races, and rarely face anyone who could actually beat them.</p></li>
+      <li><h3>Party leaders</h3><p>Safe districts make everything predictable. They get to pick who runs and reward the people who stay loyal.</p></li>
+      <li><h3>Big donors</h3><p>When money is the gate, you can buy influence early instead of having to argue for it later.</p></li>
+      <li><h3>The people who draw the maps</h3><p>Draw the lines and you've shaped who can win before a single vote is cast.</p></li>
+      <li><h3>The people who keep the rules</h3><p>The system stays easy for insiders and hard to challenge quickly. That's comfortable, if you're an insider.</p></li>
+      <li><h3>Everyone nearby</h3><p>Consultants, lawyers and political media aren't villains. They just do well out of a fight that never ends.</p></li>
     </ul>
 
-    <p class="reveal" style="margin-top:clamp(30px,5vw,44px);font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)">The mechanisms that keep them winning</p>
+    <p class="reveal mech-cap">How it keeps working</p>
     <ul class="mechanisms reveal">
       <li>Safe seats</li>
-      <li>Upstream control of access</li>
-      <li>Upstream control of competition</li>
-      <li>Legibility asymmetry</li>
-      <li>Legitimacy theater</li>
+      <li>Deciding who can take part</li>
+      <li>Deciding who can win</li>
+      <li>Insiders know the rules, you don't</li>
+      <li>It still looks fair</li>
     </ul>
 
     <div class="cols two" style="margin-top:clamp(38px,6.5vw,62px)">
       <div>
-        <h3 class="reveal">What could break our framing</h3>
-        <p class="reveal muted" style="margin-top:12px;font-size:15.5px">
-          Evidence that hidden voting barriers are rare and exceptional rather than
-          structurally recurring — or evidence that competition failure, not access
-          failure, is what people actually live. Either finding moves the whole frame.
+        <h3 class="reveal">What would prove us wrong</h3>
+        <p class="reveal muted note">
+          If it turns out getting blocked at the polls is rare rather than routine —
+          or that the real problem is uncompetitive races and not access at all —
+          then the whole map changes shape. We'd genuinely want to know.
         </p>
       </div>
       <div>
-        <h3 class="reveal">Why we're saying that out loud</h3>
-        <p class="reveal muted" style="margin-top:12px;font-size:15.5px">
-          We scored our own paradox <b style="color:var(--red)">0 out of 3</b> on
-          sharpness, and we've approached <b style="color:var(--red)">none</b> of our
-          candidate owners — county election workers and local civic intermediaries
-          are hypotheses, not commitments. A pod that can't name its own weak leg
-          isn't worth six weeks of your attention.
+        <h3 class="reveal">Why we're telling you that</h3>
+        <p class="reveal muted note">
+          We graded our own big idea and gave it <b style="color:var(--red)">0 out
+          of 3</b>. We also haven't talked to a single one of the people we think
+          might own this — county election workers and local civic helpers are
+          guesses, not commitments. A group that can't say what's weak about its own
+          thinking isn't worth six weeks of your time.
         </p>
       </div>
     </div>
@@ -919,29 +950,30 @@ body.has-sticky footer{padding-bottom:calc(86px + env(safe-area-inset-bottom))}
 <section class="action" id="vote">
   <div class="wrap">
     <span class="sec-no">07 — Your move</span>
-    <h2 class="reveal">Mapped, not solved.<br>Solving it isn't the next step.</h2>
+    <h2 class="reveal">We mapped it. We didn't solve it —<br>and solving it isn't what comes next.</h2>
     <p class="lede reveal">
-      The next step is a pod that maps the field, finds an owner who can actually
-      hold this paradox, and goes and gets the counterfactual we don't have. That
-      pod forms on votes. This is the vote.
+      What comes next is a group of people who work out who's really involved, find
+      someone on the inside who could actually do something with this, and go get
+      the piece we're missing. That group forms when enough people vote for it.
+      This is the vote.
     </p>
 
     <!-- Replace "#vote-form" with the real ballot URL — it is the only link to change. -->
     <div class="btn-row reveal">
       <a class="btn btn-primary" href="#vote-form" id="vote-cta">Vote to form this pod</a>
-      <a class="btn btn-ghost" href="./problem-situation.md">Read the full map first</a>
+      <a class="btn btn-ghost" href="./problem-situation.md">Read the map first</a>
     </div>
     <p class="fineprint reveal">
-      One vote. Pods form at quorum. If it doesn't reach quorum, the map stays
-      public and the gaps stay open.
+      One vote each. Pods form once enough people sign up. If this one doesn't make
+      it, the map stays public and the questions stay open.
     </p>
 
     <ul class="next reveal">
-      <li><span class="no">01</span><h3>Map the field</h3><p>Every player connected to the situation — defined by practice and currency, not job title.</p></li>
-      <li><span class="no">02</span><h3>Identify a client</h3><p>County election workers, local civic intermediaries — who could adopt a resolution, and what would they need to see?</p></li>
-      <li><span class="no">03</span><h3>Choose a vehicle</h3><p>Internal team, government program, open-source project, nonprofit, co-op. No right answer, only trade-offs.</p></li>
-      <li><span class="no">04</span><h3>Deepen the archaeology</h3><p>Close the counterfactual, then history and flux. Interviews, records requests, deep-research sweeps.</p></li>
-      <li><span class="no">05</span><h3>Create frames</h3><p>“If this situation is approached as if it is ___, then ___.” Only once the field is mapped.</p></li>
+      <li><span class="no">01</span><h3>Map who's involved</h3><p>Everyone connected to this — sorted by what they actually do, not their job title.</p></li>
+      <li><span class="no">02</span><h3>Find someone who could own it</h3><p>County election workers, local civic helpers — who could really run with this, and what would they need to see first?</p></li>
+      <li><span class="no">03</span><h3>Pick a shape</h3><p>A team, a government program, an open-source project, a nonprofit, a co-op. No right answer, just trade-offs.</p></li>
+      <li><span class="no">04</span><h3>Dig deeper</h3><p>Get the missing case first, then the history. Interviews, records requests, deep research.</p></li>
+      <li><span class="no">05</span><h3>Try out new framings</h3><p>“What if we looked at this as if it were ___?” Only once we know the field.</p></li>
     </ul>
   </div>
 </section>
@@ -955,13 +987,13 @@ body.has-sticky footer{padding-bottom:calc(86px + env(safe-area-inset-bottom))}
     <div class="row">
       <div>
         <div class="brand">The <b>Upskilling Labs</b> · Sensemaking Engine</div>
-        <p style="margin-top:8px">Frame Creation (Kees Dorst) · 8 cards · 6 signals · exported 25 Jul 2026</p>
+        <p style="margin-top:10px">Mapped with Frame Creation, a method by Kees Dorst · 8 cards · 6 signals · 25 July 2026</p>
       </div>
       <div style="display:flex;gap:20px;flex-wrap:wrap">
-        <a href="./problem-situation.md">Full map</a>
-        <a href="./gap-analysis.md">Gap analysis</a>
-        <a href="./research-agenda.md">Research agenda</a>
-        <a href="./state.json">Canvas state</a>
+        <a href="./problem-situation.md">The full map</a>
+        <a href="./gap-analysis.md">What we checked</a>
+        <a href="./research-agenda.md">The questions</a>
+        <a href="./state.json">The raw board</a>
       </div>
     </div>
   </div>
