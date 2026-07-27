@@ -1,0 +1,17 @@
+# Research agenda — known gaps and next investigations
+
+Gap: Hidden barriers at the point of voting are widespread, but I don’t yet know how often people discover them in time, how they respond, or which populations hit them most.  
+Question: Where do voters first learn they may be blocked, and what happens next?  
+Method: Interview voters who were turned away, warned late, or had to resolve ID/eligibility issues; survey voters about first-point-of-discovery, resolution path, and confidence in whether they were disenfranchised; send to deep research for state-by-state procedures and complaint patterns; pull secondary sources from election administration reports, Election Protection data, and litigation summaries.
+Gap: I have strong claims about district design and campaign money narrowing competition, but I don’t yet know how candidates, staff, and local organizers experience the field from the inside.  
+Question: At what point do challengers conclude a race is unwinnable, and what evidence do they use?  
+Method: Interview former challengers, campaign managers, local party chairs, and redistricting advocates; survey candidates on perceived competitiveness, donor access, and resource thresholds; send to deep research for district-level competitiveness trends, donor concentration, and mid-decade map changes; pull FEC data, redistricting analyses, and academic work on safe seats and campaign viability.
+Gap: I have a broad frame of “pre-shaped democratic participation,” but I need to know whether the core break is access, competition, or legitimacy.  
+Question: Do people experience the civic failure mainly as being blocked from entry, being offered meaningless choice, or being unable to tell who is legitimate?  
+Method: Interview ordinary voters across turnout levels, first-time voters, and habitual nonvoters; survey for which failure mode best matches lived experience; send to deep research for comparative framing across election administration, campaign finance, and political trust; pull secondary sources from civic trust surveys, election studies, and political behavior research.[
+Gap: The “broken path from civic claim to actionable judgment” is still abstract; I need to know what specific information breakdowns people face in the moment of deciding whether to act.  
+Question: What exactly prevents a civic claim from becoming a trusted, actionable judgment: source confusion, overload, delay, or competing authority?  
+Method: Interview people who recently changed or delayed civic action; survey which information obstacles most often stop action; send to deep research for cases where guidance, warnings, or claims failed to mobilize people; pull secondary sources from misinformation research, public health communication, and civic information studies.
+Gap: I keep naming authorities, incumbents, donors, and election administrators, but I don’t yet have a clean actor map showing who benefits most from each mechanism.  
+Question: Which actors gain when access stays opaque, competition stays weak, and judgment stays fragmented?  
+Method: Interview election administrators, campaign strategists, redistricting staff, reform advocates, and watchdogs; survey perceptions of who has power over rules versus outcomes; send to deep research for institutional incentive mapping; pull secondary sources from lobbying records, campaign finance reporting, and redistricting/legal scholarship.
